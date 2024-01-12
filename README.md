@@ -1,9 +1,16 @@
 # javascript-challenge
 challenge to test javascript skills
 
-members:
+## Members:
 
-Sonia Aguirre
-Ani Melendrez
-Sandra Cristina Espinoza
-Juan de Dios Albores Hernández
+- Sonia Aguirre
+
+- Sandra Cristina Espinoza
+
+- Ani Melendrez
+
+- Juan de Dios Albores Hernández
+
+## Mentor:
+
+- Israel Salinas

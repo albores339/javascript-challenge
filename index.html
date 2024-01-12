@@ -1938,5 +1938,30 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDoYkh_vEIfdf7j-QlXRcddVvhkBGYsoj4",
+        authDomain: "javascript-challenge-f0392.firebaseapp.com",
+        databaseURL: "https://javascript-challenge-f0392-default-rtdb.firebaseio.com",
+        projectId: "javascript-challenge-f0392",
+        storageBucket: "javascript-challenge-f0392.appspot.com",
+        messagingSenderId: "840101067074",
+        appId: "1:840101067074:web:867b78a858a0663973b0db",
+        measurementId: "G-VES5S5Z8W9"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>
