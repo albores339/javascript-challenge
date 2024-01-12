@@ -14,9 +14,13 @@ getPosts();
 
 const printAllPosts = (postsData) => {
     let cardsHtml = Object.keys(postsData).map((post) => {
-        let { date, postimg, tags, user, userimg, title } = postsData[post]
-        let randomRating = (Math.random() * 10).toFixed(2)
-        postsData[post].randomRating = randomRating
+        let { date, postimg, tags, user, userimg, title, randomRating } = postsData[post]
+
+        if (randomRating === undefined || randomRating === null) {
+            randomRating = (Math.random() * 10).toFixed(2);
+            postsData[post].randomRating = randomRating;
+        }
+
         return ( `<div class="card" style="width: 100%; border-radius: 5px">
         ${postimg ? `<img
         class="card-img-top"
