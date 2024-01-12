@@ -1,16 +1,22 @@
+let topButton = document.getElementById("top-button");
+let cardsList = document.getElementById("cards-list");
+let postsData; 
+
 const getPosts = async () => {
     let response = await fetch("https://javascript-challenge-f0392-default-rtdb.firebaseio.com/.json");
     let data = await response.json();
-    printAllPosts(data.posts);
+    console.log(data.posts);
+    postsData = data.posts; 
+    printAllPosts(postsData);
 }
 
 getPosts();
 
 const printAllPosts = (postsData) => {
-    let cardsList = document.getElementById("cards-list");
-
     let cardsHtml = Object.keys(postsData).map((post) => {
-        let { date, postimg, tags, user, userimg, title  } = postsData[post]
+        let { date, postimg, tags, user, userimg, title } = postsData[post]
+        let randomRating = (Math.random() * 10).toFixed(2)
+        postsData[post].randomRating = randomRating
         return ( `<div class="card" style="width: 100%; border-radius: 5px">
         ${postimg ? `<img
         class="card-img-top"
@@ -39,7 +45,7 @@ const printAllPosts = (postsData) => {
         </div>
         <div class="post__reactions d-flex d-row">
         <img src="sources/images/reactions.png" alt="" />
-        <span class="reactions__number">Rating : ${Math.floor(Math.random() * 10) + 1} ⭐</span>
+        <span class="reactions__number">Rating : ${randomRating} ⭐</span>
         <span class="comments__number"
             ><img src="sources/images/comments.png" alt="" />3
             Comments</span
@@ -54,3 +60,10 @@ const printAllPosts = (postsData) => {
     }); 
     cardsList.innerHTML = cardsHtml.join("");
 }
+
+topButton.addEventListener("click", () => {
+    cardsList.innerHTML = "";
+    let postsArray = Object.values(postsData);
+    postsArray.sort((a, b) => b.randomRating - a.randomRating);
+    printAllPosts(postsArray);
+});
