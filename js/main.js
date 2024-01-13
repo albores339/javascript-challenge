@@ -5,6 +5,9 @@ let cardsList = document.getElementById("cards-list");
 let programmingList = document.getElementById("programming-list");
 let opensourceList = document.getElementById("opensource-list");
 let productivityList = document.getElementById("productivity-list");
+let programmingList = document.getElementById("programming-list");
+let opensourceList = document.getElementById("opensource-list");
+let productivityList = document.getElementById("productivity-list");
 let postsData;
 let token = localStorage.getItem("token");
 
@@ -62,6 +65,9 @@ const printAllPosts = (postsData) => {
         <div><button href="#" class="post__language">${Object.values(tags).join(
           "  "
         )}</button></div>
+        <div><button href="#" class="post__language">${Object.values(tags).join(
+          "  "
+        )}</button></div>
         </div>
         <div class="post__reactions d-flex d-row">
         <img src="sources/images/reactions.png" alt="" />
@@ -75,15 +81,13 @@ const printAllPosts = (postsData) => {
         ></span>
         </div>
         <p class="reply__see__more">See all ${comments} comments</p>
+        <p class="reply__see__more">See all ${comments} comments</p>
     </div>`;
   });
   cardsList.innerHTML = cardsHtml.join("");
 };
 
 const getPostsByTag = () => {
-  const maxPostsPerTag = 3;
-  const addedPostsCount = { productivity: 0, opensource: 0, programming: 0 };
-
   Object.keys(postsData).map((postKey) => {
     const { tags, title, comments } = postsData[postKey];
 
@@ -98,31 +102,7 @@ const getPostsByTag = () => {
         (tag) => tag && tag.includes("#programming")
       );
 
-      if (hasProductivityTag && addedPostsCount.productivity < maxPostsPerTag) {
-        productivityList.innerHTML += `
-                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
-                        ${title}
-                        <div>
-                            <a class="comment__vinc" href="#">${comments} comments</a>
-                        </div>
-                    </a>
-                    <hr class="my-2" />
-                `;
-        addedPostsCount.productivity++;
-      }
-      if (hasOpenSourceTag && addedPostsCount.opensource < maxPostsPerTag) {
-        opensourceList.innerHTML += `
-                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
-                        ${title}
-                        <div>
-                            <a class="comment__vinc" href="#">${comments} comments</a>
-                        </div>
-                    </a>
-                    <hr class="my-2" />
-                `;
-        addedPostsCount.opensource++;
-      }
-      if (hasProgrammingTag && addedPostsCount.programming < maxPostsPerTag) {
+      if (hasProductivityTag) {
         programmingList.innerHTML += `
                     <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
                         ${title}
@@ -132,7 +112,28 @@ const getPostsByTag = () => {
                     </a>
                     <hr class="my-2" />
                 `;
-        addedPostsCount.programming++;
+      }
+      if (hasOpenSourceTag) {
+        opensourceList.innerHTML += `
+                <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                    ${title}
+                    <div>
+                        <a class="comment__vinc" href="#">${comments} comments</a>
+                    </div>
+                </a>
+                <hr class="my-2" />
+            `;
+      }
+      if (hasProgrammingTag) {
+        productivityList.innerHTML += `
+                <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                    ${title}
+                    <div>
+                        <a class="comment__vinc" href="#">${comments} comments</a>
+                    </div>
+                </a>
+                <hr class="my-2" />
+            `;
       }
     }
   });
