@@ -9,6 +9,23 @@ body {
 }
 .nav__container .nav__form__container {
   width: 420px;
+  span {
+    font-weight: 600;
+  }
+}
+
+/*BUTTONS*/
+
+.btn {
+  font-size: small;
+}
+.btnHoverNav:active {
+  font-weight: 500;
+}
+
+.btnHoverNav:hover {
+  background: rgba(0, 0, 255, 0.086);
+  color: blue;
 }
 
 /*TOOLBAR*/

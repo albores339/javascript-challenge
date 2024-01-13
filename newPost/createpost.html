@@ -30,9 +30,11 @@
               <span>Create Post</span>
             </div>
           </div>
+          <div class="d-flex btn-toolbar gap-1">
+            <button type="button" class="btn btnHoverNav">Edit</button>
+            <button type="button" class="btn btnHoverNav">Preview</button>
+          </div>
           <div class="d-flex">
-            <button type="button" class="btn">Edit</button>
-            <button type="button" class="btn">Preview</button>
             <button type="button" class="btn-close" aria-label="Close"></button>
           </div>
         </div>
@@ -87,14 +89,14 @@
 
       <!--04 SUBMIT-->
       <div
-        class="btn-toolbar"
+        class="btn-toolbar gap-1"
         role="toolbar"
         aria-label="Toolbar with button groups"
       >
-        <button type="submit" class="btn">Publish</button>
-        <button type="button" class="btn">Save</button>
-        <button>x</button>
-        <button type="reset" class="btn">Revert</button>
+        <button type="submit" class="btn btn-primary">Publish</button>
+        <button type="button" class="btn btnHoverNav">Save draft</button>
+        <button type="button" class="btn btnHoverNav">x</button>
+        <button type="reset" class="btn btnHoverNav">Revert new changes</button>
       </div>
     </div>
 
