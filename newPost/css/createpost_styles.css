@@ -1,0 +1,17 @@
+/*GENERAL*/
+body {
+  background-color: #f5f5f5;
+}
+
+/* NAV */
+.nav__container {
+  height: 56px;
+}
+.nav__container .nav__form__container {
+  width: 420px;
+}
+
+/*TOOLBAR*/
+.btn-toolbar {
+  background-color: #f5f5f5;
+}
