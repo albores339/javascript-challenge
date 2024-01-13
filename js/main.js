@@ -1,4 +1,5 @@
 let topButton = document.getElementById("top-button");
+let latestButton = document.getElementById("latest-button");
 let cardsList = document.getElementById("cards-list");
 let postsData; 
 
@@ -38,7 +39,7 @@ const printAllPosts = (postsData) => {
         <div class="post__info">
             <p class="post__name">${user}</p>
             <br />
-            <p class="post__date">${date}</p>
+            <p class="post__date">Jan ${date}</p>
         </div>
         </div>
         <h1 class="post__title">
@@ -69,5 +70,12 @@ topButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
     let postsArray = Object.values(postsData);
     postsArray.sort((a, b) => b.randomRating - a.randomRating);
+    printAllPosts(postsArray);
+});
+
+latestButton.addEventListener("click", () => {
+    cardsList.innerHTML = "";
+    let postsArray = Object.values(postsData);
+    postsArray.sort((a, b) => a.id - b.id);
     printAllPosts(postsArray);
 });
