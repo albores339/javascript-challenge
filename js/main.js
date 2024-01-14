@@ -255,7 +255,10 @@ relevantButton.addEventListener("click", () => {
 latestButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
     let postsArray = Object.values(postsData);
-    postsArray.sort((a, b) => b.date - a.date);
-    printAllPosts(postsArray);
+    const lastDate = postsArray.reduce((maxDate, post) => {
+        return post.date > maxDate ? post.date : maxDate;
+    }, 0);
+    const lastDayPosts = postsArray.filter(post => post.date === lastDate);
+    printAllPosts(lastDayPosts);
 });
 >>>>>>> 160aebc (Sort by date with de latest button)
