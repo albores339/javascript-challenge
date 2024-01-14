@@ -15,7 +15,6 @@ body {
 }
 
 /*BUTTONS*/
-
 .btn {
   font-size: small;
 }
@@ -26,6 +25,26 @@ body {
 .btnHoverNav:hover {
   background: rgba(0, 0, 255, 0.086);
   color: blue;
+}
+
+/*FORMULARIO*/
+.cover-img-btn {
+  border: 1px solid #cccccc;
+  font-weight: 500;
+  color: #3d3d3d;
+}
+
+.cover-img-btn:hover {
+  border: 1px solid #cccccc;
+}
+
+.custom-tooltip {
+  background: black;
+  border-radius: 10px 10px 10px 10px;
+  font-size: small;
+  code {
+    color: #cccccc;
+  }
 }
 
 /*TOOLBAR*/
