@@ -5,13 +5,18 @@ body {
 
 /* NAV */
 .nav__container {
-  height: 56px;
+  height: 60px;
 }
 .nav__container .nav__form__container {
   width: 420px;
   span {
     font-weight: 600;
   }
+}
+
+.btn-close:hover {
+  background-color: #297fb8;
+  color: #fff;
 }
 
 /*BUTTONS*/
