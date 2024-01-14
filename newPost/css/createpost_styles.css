@@ -47,9 +47,10 @@ body {
 }
 
 .inputHeading {
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: 800;
   color: #3d3d3d;
+  height: 2em;
 }
 
 .tagInput {
@@ -62,6 +63,7 @@ body {
   font-size: large;
   color: #3d3d3d;
   height: 300px;
+  padding: 15px;
 }
 
 .custom-tooltip {
@@ -76,7 +78,7 @@ body {
 /*TOOLBAR*/
 .btn-toolbar {
   background-color: #f5f5f5;
-  margin: 10px;
+  padding: 10px;
 }
 
 .btnToolBar:hover {
