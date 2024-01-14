@@ -88,6 +88,7 @@ const printAllPosts = (postsData) => {
 };
 
 const getPostsByTag = () => {
+<<<<<<< HEAD
   Object.keys(postsData).map((postKey) => {
     const { tags, title, comments } = postsData[postKey];
 
@@ -104,6 +105,20 @@ const getPostsByTag = () => {
 
       if (hasProductivityTag) {
         programmingList.innerHTML += `
+=======
+    const maxPostsPerTag = 3;
+    const addedPostsCount = { productivity: 0, opensource: 0, programming: 0 };
+
+    Object.keys(postsData).map(postKey => {
+        const { tags, title, comments } = postsData[postKey];
+    
+        if (Array.isArray(tags)) {
+            const hasProductivityTag = tags.some(tag => tag && tag.includes('#productivity'));
+            const hasOpenSourceTag = tags.some(tag => tag && tag.includes('#opensource'));
+            const hasProgrammingTag = tags.some(tag => tag && tag.includes('#programming'));
+    
+            if (hasProductivityTag && addedPostsCount.productivity < maxPostsPerTag) {
+                productivityList.innerHTML += `
                     <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
                         ${title}
                         <div>
@@ -112,6 +127,32 @@ const getPostsByTag = () => {
                     </a>
                     <hr class="my-2" />
                 `;
+                addedPostsCount.productivity++;
+            } 
+            if (hasOpenSourceTag && addedPostsCount.opensource < maxPostsPerTag) {
+                opensourceList.innerHTML += `
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+                addedPostsCount.opensource++;
+            } 
+            if (hasProgrammingTag && addedPostsCount.programming < maxPostsPerTag) {
+                programmingList.innerHTML += `
+>>>>>>> 5528681 (Post limits have been added.)
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+<<<<<<< HEAD
       }
       if (hasOpenSourceTag) {
         opensourceList.innerHTML += `
@@ -138,6 +179,13 @@ const getPostsByTag = () => {
     }
   });
 };
+=======
+                addedPostsCount.programming++;
+            }
+        }
+    });
+}
+>>>>>>> 5528681 (Post limits have been added.)
 
 topButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
