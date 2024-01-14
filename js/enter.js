@@ -21,4 +21,28 @@
       let token = localStorage.getItem("token");
       if (token) {
         window.open("../index.html", "_self");
+let username = document.getElementById('username');
+let password = document.getElementById('password');
+
+      // Add your login validation logic here
+      console.log(username)
+      console.log(password)
+      document.getElementById("login-button").addEventListener("click", () => {
+       
+
+      if (username && password) {
+        alert('Login successful!');
+        localStorage.setItem(
+            "token",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          )
+          window.open("../index.html", "_self");
+      } else {
+        alert('Invalid username or password. Please try again.');
+      }
+      });
+      
+      let token = localStorage.getItem("token");
+      if (token) {
+        window.open("../index.html", "_self");
       }
