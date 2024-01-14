@@ -33,7 +33,9 @@ body {
   background-color: #f5f5f5;
 }
 
-.btnHoverToolBar:hover {
+.btnToolBar:hover {
   background: rgba(0, 0, 255, 0.086);
-  color: blue;
+  svg {
+    fill: blue;
+  }
 }
