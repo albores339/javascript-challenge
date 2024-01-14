@@ -13,20 +13,6 @@ let postsData;
 let token = localStorage.getItem("token");
 let token = localStorage.getItem("token");
 
-document.getElementById("login-btn").addEventListener("click", () =>{
-    window.open("/enter.html", "_self");
-})
-
-if (token) {
-    let buttonElement = document.getElementById('login-btn');
-    buttonElement.innerHTML = 'Logout';
-    buttonElement.id = 'log-out';
-}
-
-document.getElementById("log-out").addEventListener("click", () => {
-    localStorage.removeItem("token");
-    window.open("../index.html", "_self");
-  });
 
 
 
@@ -281,3 +267,21 @@ latestButton.addEventListener("click", () => {
     printAllPosts(lastDayPosts);
 });
 >>>>>>> 160aebc (Sort by date with de latest button)
+
+
+document.getElementById("login-btn").addEventListener("click", () =>{
+    window.open("/enter.html", "_self");
+})
+
+if (token) {
+    let buttonElement = document.getElementById('login-btn');
+    buttonElement.innerHTML = 'Logout';
+    buttonElement.id = 'log-out';
+    
+}
+
+document.getElementById("log-out").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.open("../index.html", "_self");
+    printAllPosts(postsData)  
+  });
