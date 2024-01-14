@@ -14,9 +14,11 @@ body {
   }
 }
 
-.btn-close:hover {
-  background-color: #297fb8;
-  color: #fff;
+.btnClose:hover {
+  background: rgba(0, 0, 255, 0.086);
+  svg {
+    fill: blue;
+  }
 }
 
 /*BUTTONS*/
