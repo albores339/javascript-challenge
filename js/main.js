@@ -17,7 +17,6 @@ const getPosts = async () => {
 
 getPosts();
 
-
 const printAllPosts = (postsData) => {
     let cardsHtml = Object.keys(postsData).map((post) => {
         let { date, postimg, tags, user, userimg, title, randomRating, comments } = postsData[post]
@@ -72,6 +71,9 @@ const printAllPosts = (postsData) => {
 }
 
 const getPostsByTag = () => {
+    const maxPostsPerTag = 3;
+    const addedPostsCount = { productivity: 0, opensource: 0, programming: 0 };
+
     Object.keys(postsData).map(postKey => {
         const { tags, title, comments } = postsData[postKey];
     
@@ -80,7 +82,31 @@ const getPostsByTag = () => {
             const hasOpenSourceTag = tags.some(tag => tag && tag.includes('#opensource'));
             const hasProgrammingTag = tags.some(tag => tag && tag.includes('#programming'));
     
-            if (hasProductivityTag) {
+            if (hasProductivityTag && addedPostsCount.productivity < maxPostsPerTag) {
+                productivityList.innerHTML += `
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+                addedPostsCount.productivity++;
+            } 
+            if (hasOpenSourceTag && addedPostsCount.opensource < maxPostsPerTag) {
+                opensourceList.innerHTML += `
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+                addedPostsCount.opensource++;
+            } 
+            if (hasProgrammingTag && addedPostsCount.programming < maxPostsPerTag) {
                 programmingList.innerHTML += `
                     <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
                         ${title}
@@ -90,32 +116,11 @@ const getPostsByTag = () => {
                     </a>
                     <hr class="my-2" />
                 `;
-            } if (hasOpenSourceTag) {
-                opensourceList.innerHTML += `
-                <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
-                    ${title}
-                    <div>
-                        <a class="comment__vinc" href="#">${comments} comments</a>
-                    </div>
-                </a>
-                <hr class="my-2" />
-            `;
-            } if (hasProgrammingTag) {
-                productivityList.innerHTML += `
-                <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
-                    ${title}
-                    <div>
-                        <a class="comment__vinc" href="#">${comments} comments</a>
-                    </div>
-                </a>
-                <hr class="my-2" />
-            `;
+                addedPostsCount.programming++;
             }
-        }})}
-
-
-
-
+        }
+    });
+}
 
 topButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
