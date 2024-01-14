@@ -121,14 +121,14 @@ topButton.addEventListener("click", () => {
     printAllPosts(postsArray);
 });
 
-latestButton.addEventListener("click", () => {
+relevantButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
     let postsArray = Object.values(postsData);
     postsArray.sort((a, b) => a.id - b.id);
     printAllPosts(postsArray);
 });
 
-relevantButton.addEventListener("click", () => {
+latestButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
     let postsArray = Object.values(postsData);
     postsArray.sort((a, b) => b.date - a.date);
