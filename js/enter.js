@@ -1,13 +1,12 @@
-let username = document.getElementById('username');
-let password = document.getElementById('password');
+
 
       // Add your login validation logic here
-      console.log(username)
-      console.log(password)
-      document.getElementById("login-button").addEventListener("click", () => {
-       
 
-      if (username && password) {
+      document.getElementById("login-button").addEventListener("click", () => {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+
+      if (username==='Ani Melendrez' && password==='GraciasAna') {
         alert('Login successful!');
         localStorage.setItem(
             "token",
