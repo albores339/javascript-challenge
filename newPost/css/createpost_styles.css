@@ -32,3 +32,8 @@ body {
 .btn-toolbar {
   background-color: #f5f5f5;
 }
+
+.btnHoverToolBar:hover {
+  background: rgba(0, 0, 255, 0.086);
+  color: blue;
+}
