@@ -1,5 +1,6 @@
 let topButton = document.getElementById("top-button");
 let latestButton = document.getElementById("latest-button");
+let relevantButton = document.getElementById("relevant-button")
 let cardsList = document.getElementById("cards-list");
 let programmingList = document.getElementById("programming-list")
 let opensourceList = document.getElementById("opensource-list")
@@ -113,10 +114,6 @@ const getPostsByTag = () => {
             }
         }})}
 
-
-
-
-
 topButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
     let postsArray = Object.values(postsData);
@@ -124,9 +121,16 @@ topButton.addEventListener("click", () => {
     printAllPosts(postsArray);
 });
 
-latestButton.addEventListener("click", () => {
+relevantButton.addEventListener("click", () => {
     cardsList.innerHTML = "";
     let postsArray = Object.values(postsData);
     postsArray.sort((a, b) => a.id - b.id);
+    printAllPosts(postsArray);
+});
+
+latestButton.addEventListener("click", () => {
+    cardsList.innerHTML = "";
+    let postsArray = Object.values(postsData);
+    postsArray.sort((a, b) => b.date - a.date);
     printAllPosts(postsArray);
 });
