@@ -8,20 +8,6 @@ let productivityList = document.getElementById("productivity-list")
 let postsData; 
 let token = localStorage.getItem("token");
 
-document.getElementById("login-btn").addEventListener("click", () =>{
-    window.open("/enter.html", "_self");
-})
-
-if (token) {
-    let buttonElement = document.getElementById('login-btn');
-    buttonElement.innerHTML = 'Logout';
-    buttonElement.id = 'log-out';
-}
-
-document.getElementById("log-out").addEventListener("click", () => {
-    localStorage.removeItem("token");
-    window.open("../index.html", "_self");
-  });
 
 
 
@@ -163,3 +149,20 @@ latestButton.addEventListener("click", () => {
     const lastDayPosts = postsArray.filter(post => post.date === lastDate);
     printAllPosts(lastDayPosts);
 });
+
+document.getElementById("login-btn").addEventListener("click", () =>{
+    window.open("/enter.html", "_self");
+})
+
+if (token) {
+    let buttonElement = document.getElementById('login-btn');
+    buttonElement.innerHTML = 'Logout';
+    buttonElement.id = 'log-out';
+    
+}
+
+document.getElementById("log-out").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.open("../index.html", "_self");
+    printAllPosts(postsData)  
+  });
