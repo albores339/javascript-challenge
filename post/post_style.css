@@ -14,6 +14,27 @@ body {
   background-color: rgba(40, 116, 166, 0.1) !important;
 }
 
+/*ASIDE AUTOR*/
+.autorBioTxt {
+  font-size: 0.8em;
+  font-weight: 400;
+  text-wrap: nowrap;
+  color: #646464;
+}
+
+.joinBioTxt {
+  font-size: 0.7em;
+  font-weight: 600;
+  color: #4e4d4d;
+}
+
+.joinDateBioTxt {
+  font-size: 0.8em;
+  font-weight: 400;
+  text-wrap: nowrap;
+  color: #3d3d3d;
+}
+
 /* FOOTER */
 .footer__container {
   background-color: #e5e5e5;
@@ -27,4 +48,4 @@ body {
 }
 .footer__container .footer__container__line__height {
   line-height: 0rem;
-}/*# sourceMappingURL=post_style.css.map */
+} /*# sourceMappingURL=post_style.css.map */
