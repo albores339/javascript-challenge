@@ -1,34 +1,41 @@
 let topButton = document.getElementById("top-button");
 let latestButton = document.getElementById("latest-button");
 let cardsList = document.getElementById("cards-list");
-let postsData; 
+let postsData;
 
 const getPosts = async () => {
-    let response = await fetch("https://javascript-challenge-f0392-default-rtdb.firebaseio.com/.json");
-    let data = await response.json();
-    console.log(data.posts);
-    postsData = data.posts; 
-    printAllPosts(postsData);
-}
+  let response = await fetch(
+    "https://javascript-challenge-f0392-default-rtdb.firebaseio.com/.json"
+  );
+  let data = await response.json();
+  console.log(data.posts);
+  postsData = data.posts;
+  printAllPosts(postsData);
+};
 
 getPosts();
 
 const printAllPosts = (postsData) => {
-    let cardsHtml = Object.keys(postsData).map((post) => {
-        let { date, postimg, tags, user, userimg, title, randomRating } = postsData[post]
+  let cardsHtml = Object.keys(postsData).map((post) => {
+    let { date, postimg, tags, user, userimg, title, randomRating } =
+      postsData[post];
 
-        if (randomRating === undefined || randomRating === null) {
-            randomRating = (Math.random() * 10).toFixed(2);
-            postsData[post].randomRating = randomRating;
-        }
+    if (randomRating === undefined || randomRating === null) {
+      randomRating = (Math.random() * 10).toFixed(2);
+      postsData[post].randomRating = randomRating;
+    }
 
-        return ( `<div class="card" style="width: 100%; border-radius: 5px">
-        ${postimg ? `<img
+    return `<div class="card posts" style="width: 100%; border-radius: 5px">
+        ${
+          postimg
+            ? `<img
         class="card-img-top"
         src="${postimg}"
         alt="..."
         />
-        ` : ""} 
+        `
+            : ""
+        } 
         <div class="poster">
         <img
             class="rounded-5 post__photo"
@@ -46,7 +53,7 @@ const printAllPosts = (postsData) => {
         ${title}
         </h1>
         <div class="post__prog__lang">
-        <div><button class="post__language">${tags}</button></div>
+        <div><button href="#" class="post__language">${tags}</button></div>
         </div>
         <div class="post__reactions d-flex d-row">
         <img src="sources/images/reactions.png" alt="" />
@@ -60,22 +67,33 @@ const printAllPosts = (postsData) => {
         ></span>
         </div>
         <p class="reply__see__more">See all 1 comments</p>
-    </div>`
-    )
-    }); 
-    cardsList.innerHTML = cardsHtml.join("");
-}
+    </div>`;
+  });
+  cardsList.innerHTML = cardsHtml.join("");
+};
 
 topButton.addEventListener("click", () => {
-    cardsList.innerHTML = "";
-    let postsArray = Object.values(postsData);
-    postsArray.sort((a, b) => b.randomRating - a.randomRating);
-    printAllPosts(postsArray);
+  cardsList.innerHTML = "";
+  let postsArray = Object.values(postsData);
+  postsArray.sort((a, b) => b.randomRating - a.randomRating);
+  printAllPosts(postsArray);
 });
 
 latestButton.addEventListener("click", () => {
-    cardsList.innerHTML = "";
-    let postsArray = Object.values(postsData);
-    postsArray.sort((a, b) => a.id - b.id);
-    printAllPosts(postsArray);
+  cardsList.innerHTML = "";
+  let postsArray = Object.values(postsData);
+  postsArray.sort((a, b) => a.id - b.id);
+  printAllPosts(postsArray);
 });
+
+/*SEARCH*/
+document.addEventListener("keyup", (e) => {
+  if (e.target.matches("#buscador")) {
+    document.querySelectorAll(".posts").forEach((word) => {
+      word.textContent.toLowerCase().includes(e.target.value)
+        ? word.classList.remove("filtro")
+        : word.classList.add("filtro");
+    });
+  }
+});
+/*fin*/
