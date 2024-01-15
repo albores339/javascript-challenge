@@ -7,12 +7,12 @@ const tooltipList = [...tooltipTriggerList].map(
 );
 
 /*FORMULARIO CREAR POST*/
-let postTitleTxt = document.getElementById("titlePost");
-let tagInputPost = document.getElementById("tagInput");
-let coverImgBtn = document.getElementById("coverImgPostBtn");
-let txtAreaPost = document.getElementById("txtPost");
+let title = document.getElementById("postTitleTxt");
+let tag = document.getElementById("tagInputPost");
+let cover = document.getElementById("coverImgBtn");
+let txt = document.getElementById("textAreaPost");
 
-let newPost = [];
+let postsArray = [];
 
 const savePost = async (post) => {
   let response = await fetch(
@@ -34,15 +34,31 @@ const getAllPosts = async () => {
   printAllPosts(data);
 };
 
-let saveDraftBtn = document.getElementById("save-post");
+const printAllPosts = (posts) => {
+  console.log(posts);
+  // let postList = document.getElementById("post-list");
+  // postList.innerHTML = "";
 
-saveDraftBtn.addEventListener("click", async () => {
-  let titlePost = postTitleTxt.value;
-  let tagInput = tagInputPost.value;
-  let coverImgPostBtn = coverImgBtn.value;
-  let txtPost = txtAreaPost.value;
-  let post = { titlePost, tagInput, coverImgPostBtn, txtPost };
-  let response = await savePost(post);
-  console.log(response);
-  getAllPosts();
+  let postsArray = Object.keys(posts).map((key) => ({ ...posts[key], key }));
+  console.log(postsArray);
+};
+
+let publishPostButton = document.getElementById("publishBtn");
+
+publishPostButton.addEventListener("click", async (event) => {
+  event.preventDefault();
+
+  let title = postTitleTxt.value;
+  let tag = tagInputPost.value;
+  let cover = coverImgBtn.src;
+  let txt = textAreaPost.value;
+
+  let post = { title, tag, cover, txt };
+
+  console.log(post);
+  let result = await savePost(post);
+  console.log(result);
+  printAllPosts();
 });
+
+printAllPosts();
