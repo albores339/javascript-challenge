@@ -34,4 +34,15 @@ const getAllPosts = async () => {
   printAllPosts(data);
 };
 
-/*boton de guardar o publicar task??? */
+let saveDraftBtn = document.getElementById("save-post");
+
+saveDraftBtn.addEventListener("click", async () => {
+  let titlePost = postTitleTxt.value;
+  let tagInput = tagInputPost.value;
+  let coverImgPostBtn = coverImgBtn.value;
+  let txtPost = txtAreaPost.value;
+  let post = { titlePost, tagInput, coverImgPostBtn, txtPost };
+  let response = await savePost(post);
+  console.log(response);
+  getAllPosts();
+});
