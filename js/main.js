@@ -1,6 +1,7 @@
 let topButton = document.getElementById("top-button");
 let latestButton = document.getElementById("latest-button");
 let relevantButton = document.getElementById("relevant-button");
+let relevantButton = document.getElementById("relevant-button")
 let cardsList = document.getElementById("cards-list");
 let programmingList = document.getElementById("programming-list");
 let opensourceList = document.getElementById("opensource-list");
@@ -182,10 +183,14 @@ const getPostsByTag = () => {
 =======
                 addedPostsCount.programming++;
             }
+<<<<<<< HEAD
         }
     });
 }
 >>>>>>> 5528681 (Post limits have been added.)
+=======
+        }})}
+>>>>>>> 160aebc (Sort by date with de latest button)
 
 topButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
@@ -194,6 +199,7 @@ topButton.addEventListener("click", () => {
   printAllPosts(postsArray);
 });
 
+<<<<<<< HEAD
 relevantButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
   let postsArray = Object.values(postsData);
@@ -238,3 +244,18 @@ document.addEventListener("keyup", (e) => {
   }
 });
 /*fin*/
+=======
+relevantButton.addEventListener("click", () => {
+    cardsList.innerHTML = "";
+    let postsArray = Object.values(postsData);
+    postsArray.sort((a, b) => a.id - b.id);
+    printAllPosts(postsArray);
+});
+
+latestButton.addEventListener("click", () => {
+    cardsList.innerHTML = "";
+    let postsArray = Object.values(postsData);
+    postsArray.sort((a, b) => b.date - a.date);
+    printAllPosts(postsArray);
+});
+>>>>>>> 160aebc (Sort by date with de latest button)
