@@ -19,6 +19,7 @@
       type="image/x-icon"
       href="./sources/images/mojarra3.webp"
     />
+    
   </head>
   <body>
     <!-- NAV -->
@@ -47,19 +48,14 @@
             <div class="d-none d-md-block m-auto nav__form__container">
               <form class="d-flex form__search" role="search">
                 <div class="input-group">
-                  <!--movi de button id *cris-->
                   <input
-                    id="buscador"
-                    type="search"
+                    type="text"
                     class="form-control border-end-0"
                     placeholder="Search..."
                     aria-label="Buscar"
                     aria-describedby="basic-addon1"
                   />
-                  <button
-                    id="button-search"
-                    class="border-0 bg-white p-0 search__button"
-                  >
+                  <button class="border-0 bg-white p-0 search__button">
                     <span
                       class="bg-white border-1 border-start-0 rounded-0 rounded-end input-group-text search__hover"
                       id="basic-addon1"
@@ -1156,22 +1152,16 @@
               <a href=""><img src="sources/images/ig.ico" alt="" /></a>
               <a href=""><img src="sources/images/mastodon.ico" alt="" /></a>
             </div>
-            <div
-              class="card border-0 bg-transparent px-3"
-              style="margin-bottom: 100px"
-            >
-              <div class="card-body">
+            <div class="card border-0 bg-transparent px-3" style="margin-bottom: 100px;">
+              <div class="card-body ">
                 <h6 class="card-title d-flex justify-content-between fw-bold">
                   My Tags
-                  <img
-                    class="icon__null"
-                    src="./sources/images/icon_null.jpeg"
-                    alt=""
-                  />
+                  <img class="icon__null" src="./sources/images/icon_null.jpeg" alt="">
                 </h6>
               </div>
             </div>
             <div class="px-3">
+              
               <div class="card mb-4">
                 <div class="card-body">
                   <h5
@@ -1242,10 +1232,7 @@
         >
           <div class="main__title__container">
             <ul class="main__title__items">
-              <button
-                id="latest-button"
-                class="btn btn-outline-light text-dark font-bold"
-              >
+              <button id="latest-button" class="btn btn-outline-light text-dark font-bold">
                 Relevant
               </button>
               <li>Latest</li>
@@ -1255,8 +1242,12 @@
             </ul>
           </div>
 
-          <div id="cards-list"></div>
+          <div id="cards-list">
+
+          </div>
           <!-- CARD 1 -->
+
+
         </main>
         <aside class="col-3 d-none d-lg-block mt-3">
           <div class="card mb-4">
@@ -1603,21 +1594,20 @@
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
-
+    
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
         apiKey: "AIzaSyDoYkh_vEIfdf7j-QlXRcddVvhkBGYsoj4",
         authDomain: "javascript-challenge-f0392.firebaseapp.com",
-        databaseURL:
-          "https://javascript-challenge-f0392-default-rtdb.firebaseio.com",
+        databaseURL: "https://javascript-challenge-f0392-default-rtdb.firebaseio.com",
         projectId: "javascript-challenge-f0392",
         storageBucket: "javascript-challenge-f0392.appspot.com",
         messagingSenderId: "840101067074",
         appId: "1:840101067074:web:867b78a858a0663973b0db",
-        measurementId: "G-VES5S5Z8W9",
+        measurementId: "G-VES5S5Z8W9"
       };
-
+    
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
