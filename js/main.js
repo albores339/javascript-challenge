@@ -1,7 +1,12 @@
 let topButton = document.getElementById("top-button");
 let latestButton = document.getElementById("latest-button");
+let relevantButton = document.getElementById("relevant-button");
 let cardsList = document.getElementById("cards-list");
+let programmingList = document.getElementById("programming-list");
+let opensourceList = document.getElementById("opensource-list");
+let productivityList = document.getElementById("productivity-list");
 let postsData;
+let token = localStorage.getItem("token");
 
 const getPosts = async () => {
   let response = await fetch(
@@ -11,13 +16,14 @@ const getPosts = async () => {
   console.log(data.posts);
   postsData = data.posts;
   printAllPosts(postsData);
+  getPostsByTag(postsData);
 };
 
 getPosts();
 
 const printAllPosts = (postsData) => {
   let cardsHtml = Object.keys(postsData).map((post) => {
-    let { date, postimg, tags, user, userimg, title, randomRating } =
+    let { date, postimg, tags, user, userimg, title, randomRating, comments } =
       postsData[post];
 
     if (randomRating === undefined || randomRating === null) {
@@ -53,7 +59,9 @@ const printAllPosts = (postsData) => {
         ${title}
         </h1>
         <div class="post__prog__lang">
-        <div><button href="#" class="post__language">${tags}</button></div>
+        <div><button href="#" class="post__language">${Object.values(tags).join(
+          "  "
+        )}</button></div>
         </div>
         <div class="post__reactions d-flex d-row">
         <img src="sources/images/reactions.png" alt="" />
@@ -66,10 +74,68 @@ const printAllPosts = (postsData) => {
             >3 min read <i class="bi bi-bookmark"></i
         ></span>
         </div>
-        <p class="reply__see__more">See all 1 comments</p>
+        <p class="reply__see__more">See all ${comments} comments</p>
     </div>`;
   });
   cardsList.innerHTML = cardsHtml.join("");
+};
+
+const getPostsByTag = () => {
+  const maxPostsPerTag = 3;
+  const addedPostsCount = { productivity: 0, opensource: 0, programming: 0 };
+
+  Object.keys(postsData).map((postKey) => {
+    const { tags, title, comments } = postsData[postKey];
+
+    if (Array.isArray(tags)) {
+      const hasProductivityTag = tags.some(
+        (tag) => tag && tag.includes("#productivity")
+      );
+      const hasOpenSourceTag = tags.some(
+        (tag) => tag && tag.includes("#opensource")
+      );
+      const hasProgrammingTag = tags.some(
+        (tag) => tag && tag.includes("#programming")
+      );
+
+      if (hasProductivityTag && addedPostsCount.productivity < maxPostsPerTag) {
+        productivityList.innerHTML += `
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+        addedPostsCount.productivity++;
+      }
+      if (hasOpenSourceTag && addedPostsCount.opensource < maxPostsPerTag) {
+        opensourceList.innerHTML += `
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+        addedPostsCount.opensource++;
+      }
+      if (hasProgrammingTag && addedPostsCount.programming < maxPostsPerTag) {
+        programmingList.innerHTML += `
+                    <a class="listing__type" href="#" class="my-2 text-dark text-decoration-none">
+                        ${title}
+                        <div>
+                            <a class="comment__vinc" href="#">${comments} comments</a>
+                        </div>
+                    </a>
+                    <hr class="my-2" />
+                `;
+        addedPostsCount.programming++;
+      }
+    }
+  });
 };
 
 topButton.addEventListener("click", () => {
@@ -79,11 +145,37 @@ topButton.addEventListener("click", () => {
   printAllPosts(postsArray);
 });
 
-latestButton.addEventListener("click", () => {
+relevantButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
   let postsArray = Object.values(postsData);
   postsArray.sort((a, b) => a.id - b.id);
   printAllPosts(postsArray);
+});
+
+latestButton.addEventListener("click", () => {
+  cardsList.innerHTML = "";
+  let postsArray = Object.values(postsData);
+  const lastDate = postsArray.reduce((maxDate, post) => {
+    return post.date > maxDate ? post.date : maxDate;
+  }, 0);
+  const lastDayPosts = postsArray.filter((post) => post.date === lastDate);
+  printAllPosts(lastDayPosts);
+});
+
+document.getElementById("login-btn").addEventListener("click", () => {
+  window.open("/enter.html", "_self");
+});
+
+if (token) {
+  let buttonElement = document.getElementById("login-btn");
+  buttonElement.innerHTML = "Logout";
+  buttonElement.id = "log-out";
+}
+
+document.getElementById("log-out").addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.open("../index.html", "_self");
+  printAllPosts(postsData);
 });
 
 /*SEARCH*/
