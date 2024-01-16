@@ -170,12 +170,19 @@ if (token) {
   let buttonElement = document.getElementById("login-btn");
   buttonElement.innerHTML = "Logout";
   buttonElement.id = "log-out";
+  let buttonCreatePost = document.getElementById("create-account")
+  buttonCreatePost.innerHTML = "Create Post";
+  buttonCreatePost.id = "create-post";
 }
 
 document.getElementById("log-out").addEventListener("click", () => {
   localStorage.removeItem("token");
   window.open("../index.html", "_self");
   printAllPosts(postsData);
+});
+
+document.getElementById("create-post").addEventListener("click", () => {
+  window.open("../newPost/createpost.html", "_self");
 });
 
 /*SEARCH*/
