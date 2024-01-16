@@ -60,18 +60,19 @@
       <div class="card bg-white border-muted">
         <!--01 FORMULARIO-->
         <div class="row formularioCard">
-          <div>
-            <label
-              for="coverImgBtn"
-              class="btn cover-img-btn"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              data-bs-custom-class="custom-tooltip"
-              data-bs-title="Use a ratio of 1000:420 for best results"
-              >Add cover image</label
+          <div
+            class="input-group input-group-sm"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Use a ratio of 1000:420 for best results"
+          >
+            <span class="input-group-text cover-img-btn" id="basic-addon1"
+              >Add cover image</span
             >
-            <input type="file" id="coverImgBtn" hidden />
+            <input type="text" class="form-control" id="coverImgBtn" />
           </div>
+
           <div class="input-group">
             <textarea
               class="form-control border-0 inputHeading"
