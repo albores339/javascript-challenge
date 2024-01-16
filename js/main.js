@@ -7,7 +7,6 @@ let opensourceList = document.getElementById("opensource-list");
 let productivityList = document.getElementById("productivity-list");
 let postsData;
 let token = localStorage.getItem("token");
-let postTitle = document.getElementById("post-title");
 
 const getPosts = async () => {
   let response = await fetch(
@@ -24,8 +23,9 @@ getPosts();
 
 const printAllPosts = (postsData) => {
   let cardsHtml = Object.keys(postsData).map((post) => {
-    let { date, postimg, tags, user, userimg, title, randomRating, comments } =
+    let { date, postimg, tags, userName, userImg, title, randomRating, comments } =
       postsData[post];
+      console.log(post)
 
     if (randomRating === undefined || randomRating === null) {
       randomRating = (Math.random() * 10).toFixed(2);
@@ -47,11 +47,11 @@ const printAllPosts = (postsData) => {
         <img
             class="rounded-5 post__photo"
             alt="algo"
-            src="${userimg}"
+            src="${userImg}"
             alt=""
         />
         <div class="post__info">
-            <p class="post__name">${user}</p>
+            <p class="post__name">${userName}</p>
             <br />
             <p class="post__date">Jan ${date}</p>
         </div>
@@ -220,3 +220,5 @@ document.addEventListener("keyup", (e) => {
 // });
 
 /*fin*/
+
+

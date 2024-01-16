@@ -1204,34 +1204,28 @@
           <section class="d-flex flex-column">
             <div class="card">
               <!--IMAGE ARTICLE TOP CARD !!!!QUITAR LA PROPIEDAD HEIGHT Y PLACEHOLDER AL EDITAR!!!-->
-              <img src="..." class="card-img-top placeholder bg-danger" alt="..." height="420">
+              <img id="post-img" src="" class="card-img-top bg-danger object-fit-cover" alt="..." height="420">
               <div class="card-body p-md-5 p-3">
                 <!--DETALLES DEL AUTOR-->
                 <div class="d-flex justify-content-start">
                   <div class="position-relative">
                     <img
-                      src="https://res.cloudinary.com/practicaldev/image/fetch/s--dh67OQ-m--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/organization/profile_image/6187/90757535-3192-487a-a278-73b0ff7bec09.png"
+                      id="post-userimg"
+                      src=""
                       alt=""
                       class="rounded-circle"
                       width="40"
                       height="40"
                     />
-                    <img
-                      src="https://res.cloudinary.com/practicaldev/image/fetch/s--cf1x0CkB--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/495014/9ebab45e-599d-4d92-bb2b-e8a2dfbf8d3a.jpg"
-                      alt=""
-                      width="24"
-                      height="24"
-                      class="rounded-circle position-absolute start-50 top-50"
-                    />
                   </div>
 
                   <div class="ms-3">
-                    <h5 class="card-title fw-semibold">
-                      Jatin Sharma
+                    <h5 id="post-user" class="card-title fw-semibold">
+                      
                       <small class="text-body-secondary">for Documatic</small>
                     </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      Posted on 10 jun
+                    <h6 id="post-date" class="card-subtitle mb-2 text-muted">
+                      
                     </h6>
                   </div>
                 </div>
@@ -1284,8 +1278,8 @@
                 </div>
                 <!--TITLE-->
                 <div class="mt-1">
-                  <h1 class="fw-bold">
-                    Lorem ipsum dolor sit amet
+                  <h1 id="post-title" class="fw-bold">
+
                   </h1>
                   <!--TAGS-->
                   <div class="my-3">
@@ -1329,13 +1323,14 @@
                   class="bg-white rounded-circle border border-dark-subtle position-absolute bottom-0"
                 >
                   <img
-                    src="https://res.cloudinary.com/practicaldev/image/fetch/s--KQZQeede--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/organization/profile_image/6187/90757535-3192-487a-a278-73b0ff7bec09.png"
+                    id="post-userimg2"
+                    src=""
                     class="rounded-circle"
                     width="44"
                     height="44"
                   />
                 </span>
-                <span class="ms-5"><b> Documatic </b></span>
+                <span id="post-user2" class="ms-5"><b> </b></span>
               </li>
               <li
                 class="list-group-item d-flex justify-content-center border-0"
@@ -1572,5 +1567,7 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+    <script src="./post-detail.js">
+    </script>
   </body>
 </html>
