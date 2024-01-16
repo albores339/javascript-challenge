@@ -204,12 +204,12 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-postTitle.addEventListener("click", (event) => {
-  console.log(event.target);
-  console.log(event.target.dataset.postKey);
-  let postKey = event.target.dataset.postKey;
+// postTitle.addEventListener("click", (event) => {
+//   console.log(event.target);
+//   console.log(event.target.dataset.postKey);
+//   let postKey = event.target.dataset.postKey;
 
-  window.open(`views/char-detail.html?postId=${postKey}`);
-});
+//   window.open(`views/char-detail.html?postId=${postKey}`);
+// });
 
 /*fin*/
