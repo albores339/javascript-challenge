@@ -8,9 +8,14 @@ const tooltipList = [...tooltipTriggerList].map(
 
 /*FORMULARIO CREAR POST*/
 let title = document.getElementById("postTitleTxt");
-let tag = document.getElementById("tagInputPost");
-let cover = document.getElementById("coverImgBtn");
+let tags = document.getElementById("tagInputPost");
+let postimg = document.getElementById("coverImgBtn");
 let txt = document.getElementById("textAreaPost");
+let comments = document.getElementById("commentInputPost");
+let date = document.getElementById("dateInputPost");
+let id = document.getElementById("idInputPost");
+let userName = document.getElementById("userNameInputPost");
+let userImg = document.getElementById("userImgInputPost");
 
 let postsArray = [];
 
@@ -36,8 +41,6 @@ const getAllPosts = async () => {
 
 const printAllPosts = (posts) => {
   console.log(posts);
-  // let postList = document.getElementById("post-list");
-  // postList.innerHTML = "";
 
   let postsArray = Object.keys(posts).map((key) => ({ ...posts[key], key }));
   console.log(postsArray);
@@ -49,16 +52,33 @@ publishPostButton.addEventListener("click", async (event) => {
   event.preventDefault();
 
   let title = postTitleTxt.value;
-  let tag = tagInputPost.value;
-  let cover = coverImgBtn.src;
+  let tags = tagInputPost.value;
+  let postimg = coverImgBtn.src;
   let txt = textAreaPost.value;
+  let comments = commentInputPost.value;
+  let date = dateInputPost.value;
+  let id = idInputPost.value;
+  let userName = userNameInputPost.value;
+  let userImg = userImgInputPost.src;
 
-  let post = { title, tag, cover, txt };
+  let post = {
+    title,
+    tags,
+    postimg,
+    txt,
+    comments,
+    date,
+    id,
+    userName,
+    userImg,
+  };
 
   console.log(post);
   let result = await savePost(post);
   console.log(result);
   printAllPosts();
+
+  window.open(".../index.html", "_self");
 });
 
 printAllPosts();
