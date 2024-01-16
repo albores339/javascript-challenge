@@ -15,14 +15,21 @@ const getPostByKey = async (postKey) => {
   let data = await response.json();
   let { postimg, title, userImg, date, userName } = data;
 
-  postimg ? document.getElementById("post-img").setAttribute("src", postimg) : document.getElementById("post-img").setAttribute("src", "https://res.cloudinary.com/practicaldev/image/fetch/s--tEt0Xh96--/c_imagga_scale,f_auto,fl_progressive,h_420,q_66,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/byraqw5oiy8jr892fgzs.gif")
+  postimg
+    ? document.getElementById("post-img").setAttribute("src", postimg)
+    : document
+        .getElementById("post-img")
+        .setAttribute(
+          "src",
+          "https://res.cloudinary.com/practicaldev/image/fetch/s--tEt0Xh96--/c_imagga_scale,f_auto,fl_progressive,h_420,q_66,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/byraqw5oiy8jr892fgzs.gif"
+        );
   document.getElementById("post-user").innerText = userName;
   document.getElementById("post-userimg").setAttribute("src", userImg);
   document.getElementById("post-user2").innerText = userName;
   document.getElementById("post-userimg2").setAttribute("src", userImg);
   document.getElementById("post-date").innerText = `Posted on ${date} jan`;
   document.getElementById("post-title").innerText = title;
-  console.log(title)
+  console.log(title);
   console.log(data);
 };
 

@@ -56,7 +56,7 @@ const printAllPosts = (postsData) => {
             <p class="post__date">Jan ${date}</p>
         </div>
         </div>
-        <h1 data-post-key=${post} class="post__title post-title">
+        <h1 class="post__title post-title" data-post-key =${post} >
         ${title}
         </h1>
         <div class="post__prog__lang">
@@ -79,19 +79,20 @@ const printAllPosts = (postsData) => {
     </div>`;
   });
   cardsList.innerHTML = cardsHtml.join("");
-    /*Seleccionamos todos los botones de ver más*/
-    let postTitle = document.querySelectorAll(".post-title");
 
-    /* a cada botón, le agregamos un listener*/
-    postTitle.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        console.log(event.target);
-        console.log(event.target.dataset.postKey);
-        let postKey = event.target.dataset.postKey;
-        /*este listener va a abrir la vista "char-detail"*/
-        window.open(`post/post-detail.html?postKey=${postKey}`, "_self");
-      });
+  /*Seleccionamos todos los titulos*/
+  let postTitle = document.querySelectorAll(".post-title");
+
+  /* a cada botón, le agregamos un listener*/
+  postTitle.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      console.log(event.target);
+      console.log(event.target.dataset.postKey);
+      let postKey = event.target.dataset.postKey;
+      /*este listener va a abrir la vista "char-detail"*/
+      window.open(`post/post-detail.html?postKey=${postKey}`, "_self");
     });
+  });
 };
 
 const getPostsByTag = () => {
@@ -202,6 +203,14 @@ document.addEventListener("keyup", (e) => {
     });
   }
 });
+
+// postTitle.addEventListener("click", (event) => {
+//   console.log(event.target);
+//   console.log(event.target.dataset.postKey);
+//   let postKey = event.target.dataset.postKey;
+
+//   window.open(`views/char-detail.html?postId=${postKey}`);
+// });
 
 /*fin*/
 
