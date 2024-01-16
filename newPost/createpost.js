@@ -38,13 +38,13 @@ publishPostButton.addEventListener("click", async (event) => {
 
   let title = postTitleTxt.value;
   let tags = tagInputPost.value;
-  let postimg = coverImgBtn.src;
+  let postimg = coverImgBtn.value;
   let txt = textAreaPost.value;
   let comments = commentInputPost.value;
   let date = dateInputPost.value;
   let id = idInputPost.value;
   let userName = userNameInputPost.value;
-  let userImg = userImgInputPost.src;
+  let userImg = userImgInputPost.value;
 
   if (
     title ||
