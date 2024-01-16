@@ -31,21 +31,6 @@ const savePost = async (post) => {
   return data;
 };
 
-const getAllPosts = async () => {
-  let response = await fetch(
-    "https://javascript-challenge-f0392-default-rtdb.firebaseio.com/posts/.json"
-  );
-  let data = await response.json();
-  printAllPosts(data);
-};
-
-const printAllPosts = (posts) => {
-  console.log(posts);
-
-  let postsArray = Object.keys(posts).map((key) => ({ ...posts[key], key }));
-  console.log(postsArray);
-};
-
 let publishPostButton = document.getElementById("publishBtn");
 
 publishPostButton.addEventListener("click", async (event) => {
@@ -61,24 +46,34 @@ publishPostButton.addEventListener("click", async (event) => {
   let userName = userNameInputPost.value;
   let userImg = userImgInputPost.src;
 
-  let post = {
-    title,
-    tags,
-    postimg,
-    txt,
-    comments,
-    date,
-    id,
-    userName,
-    userImg,
-  };
+  if (
+    title ||
+    tags ||
+    postimg ||
+    txt ||
+    comments ||
+    date ||
+    id ||
+    userName ||
+    userImg
+  ) {
+    let post = {
+      title,
+      tags,
+      postimg,
+      txt,
+      comments,
+      date,
+      id,
+      userName,
+      userImg,
+    };
+    let result = await savePost(post);
+    console.log(result);
+  } else {
+    alert("Por favor, complete los cambios obligatorios");
+    return;
+  }
 
-  console.log(post);
-  let result = await savePost(post);
-  console.log(result);
-  printAllPosts();
-
-  window.open(".../index.html", "_self");
+  window.open("../index.html", "_self");
 });
-
-printAllPosts();
