@@ -36,7 +36,7 @@ const printAllPosts = (postsData) => {
         ${
           postimg
             ? `<img
-        class="card-img-top"
+        class="card-img-top post-img"
         src="${postimg}"
         alt="..."
         />
@@ -45,18 +45,18 @@ const printAllPosts = (postsData) => {
         } 
         <div class="poster">
         <img
-            class="rounded-5 post__photo"
+            class="rounded-5 post__photo post-userimg"
             alt="algo"
             src="${userimg}"
             alt=""
         />
         <div class="post__info">
-            <p class="post__name">${user}</p>
+            <p class="post__name post-user">${user}</p>
             <br />
-            <p class="post__date">Jan ${date}</p>
+            <p class="post__date post-date">Posted on ${date} jan</p>
         </div>
         </div>
-        <h1 class="post__title post-title" data-post-key =${post} >
+        <h1 data-post-key=${post} class="post__title post-title">
         ${title}
         </h1>
         <div class="post__prog__lang">
@@ -204,12 +204,12 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-// postTitle.addEventListener("click", (event) => {
-//   console.log(event.target);
-//   console.log(event.target.dataset.postKey);
-//   let postKey = event.target.dataset.postKey;
+postTitle.addEventListener("click", (event) => {
+  console.log(event.target);
+  console.log(event.target.dataset.postKey);
+  let postKey = event.target.dataset.postKey;
 
-//   window.open(`views/char-detail.html?postId=${postKey}`);
-// });
+  window.open(`views/char-detail.html?postId=${postKey}`);
+});
 
 /*fin*/
