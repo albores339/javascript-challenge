@@ -23,8 +23,9 @@ getPosts();
 
 const printAllPosts = (postsData) => {
   let cardsHtml = Object.keys(postsData).map((post) => {
-    let { date, postimg, tags, user, userimg, title, randomRating, comments } =
+    let { date, postimg, tags, userName, userImg, title, randomRating, comments } =
       postsData[post];
+      console.log(post)
 
     if (randomRating === undefined || randomRating === null) {
       randomRating = (Math.random() * 10).toFixed(2);
@@ -46,16 +47,16 @@ const printAllPosts = (postsData) => {
         <img
             class="rounded-5 post__photo"
             alt="algo"
-            src="${userimg}"
+            src="${userImg}"
             alt=""
         />
         <div class="post__info">
-            <p class="post__name">${user}</p>
+            <p class="post__name">${userName}</p>
             <br />
             <p class="post__date">Jan ${date}</p>
         </div>
         </div>
-        <h1 class="post__title">
+        <h1 class="post__title post-title" data-post-key =${post} >
         ${title}
         </h1>
         <div class="post__prog__lang">
@@ -78,6 +79,20 @@ const printAllPosts = (postsData) => {
     </div>`;
   });
   cardsList.innerHTML = cardsHtml.join("");
+
+  /*Seleccionamos todos los titulos*/
+  let postTitle = document.querySelectorAll(".post-title");
+
+  /* a cada botón, le agregamos un listener*/
+  postTitle.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      console.log(event.target);
+      console.log(event.target.dataset.postKey);
+      let postKey = event.target.dataset.postKey;
+      /*este listener va a abrir la vista "char-detail"*/
+      window.open(`post/post-detail.html?postKey=${postKey}`, "_self");
+    });
+  });
 };
 
 const getPostsByTag = () => {
@@ -170,12 +185,19 @@ if (token) {
   let buttonElement = document.getElementById("login-btn");
   buttonElement.innerHTML = "Logout";
   buttonElement.id = "log-out";
+  let buttonCreatePost = document.getElementById("create-account")
+  buttonCreatePost.innerHTML = "Create Post";
+  buttonCreatePost.id = "create-post";
 }
 
 document.getElementById("log-out").addEventListener("click", () => {
   localStorage.removeItem("token");
   window.open("../index.html", "_self");
   printAllPosts(postsData);
+});
+
+document.getElementById("create-post").addEventListener("click", () => {
+  window.open("../newPost/createpost.html", "_self");
 });
 
 /*SEARCH*/
@@ -188,4 +210,15 @@ document.addEventListener("keyup", (e) => {
     });
   }
 });
+
+// postTitle.addEventListener("click", (event) => {
+//   console.log(event.target);
+//   console.log(event.target.dataset.postKey);
+//   let postKey = event.target.dataset.postKey;
+
+//   window.open(`views/char-detail.html?postId=${postKey}`);
+// });
+
 /*fin*/
+
+
