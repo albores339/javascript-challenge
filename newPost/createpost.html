@@ -61,17 +61,16 @@
         <!--01 FORMULARIO-->
         <div class="row formularioCard">
           <div>
-            <button
-              type="button"
+            <label
+              for="coverImgBtn"
               class="btn cover-img-btn"
               data-bs-toggle="tooltip"
               data-bs-placement="bottom"
-              data-bs-custom-class="custom-tooltip arrow"
+              data-bs-custom-class="custom-tooltip"
               data-bs-title="Use a ratio of 1000:420 for best results"
-              id="coverImgBtn"
+              >Add cover image</label
             >
-              Add a cover image
-            </button>
+            <input type="file" id="coverImgBtn" hidden />
           </div>
           <div class="input-group">
             <textarea
@@ -86,6 +85,38 @@
               class="form-control border-0 tagInput"
               placeholder="Add up to 4 tags..."
               id="tagInputPost"
+            />
+          </div>
+          <div class="input-group inputFb border-muted">
+            <input
+              type="text"
+              class="form-control tagInput"
+              placeholder="comments"
+              id="commentInputPost"
+            />
+            <input
+              type="text"
+              class="form-control tagInput"
+              placeholder="date"
+              id="dateInputPost"
+            />
+            <input
+              type="text"
+              class="form-control tagInput"
+              placeholder="id"
+              id="idInputPost"
+            />
+            <input
+              type="text"
+              class="form-control tagInput"
+              placeholder="user name"
+              id="userNameInputPost"
+            />
+            <input
+              type="text"
+              class="form-control tagInput"
+              placeholder="user img"
+              id="userImgInputPost"
             />
           </div>
         </div>

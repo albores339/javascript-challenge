@@ -82,6 +82,10 @@ body {
   }
 }
 
+.inputFb {
+  margin-top: 10px;
+}
+
 /*TOOLBAR*/
 .btn-toolbar {
   background-color: #f5f5f5;
