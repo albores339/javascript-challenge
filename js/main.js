@@ -80,16 +80,12 @@ const printAllPosts = (postsData) => {
   });
   cardsList.innerHTML = cardsHtml.join("");
 
-  /*Seleccionamos todos los titulos*/
+
   let postTitle = document.querySelectorAll(".post-title");
 
-  /* a cada botón, le agregamos un listener*/
   postTitle.forEach((button) => {
     button.addEventListener("click", (event) => {
-      console.log(event.target);
-      console.log(event.target.dataset.postKey);
-      let postKey = event.target.dataset.postKey;
-      /*este listener va a abrir la vista "char-detail"*/
+      let postKey = event.currentTarget.dataset.postKey;
       window.open(`post/post-detail.html?postKey=${postKey}`, "_self");
     });
   });
@@ -101,7 +97,6 @@ const getPostsByTag = () => {
 
   Object.keys(postsData).map((postKey) => {
     const { tags, title, comments } = postsData[postKey];
-
     if (Array.isArray(tags)) {
       const hasProductivityTag = tags.some(
         (tag) => tag && tag.includes("#productivity")
@@ -155,26 +150,38 @@ const getPostsByTag = () => {
 
 topButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
-  let postsArray = Object.values(postsData);
-  postsArray.sort((a, b) => b.randomRating - a.randomRating);
-  printAllPosts(postsArray);
+  let postsArray = Object.entries(postsData); // Usar Object.entries para obtener [clave, valor]
+  postsArray.sort(([, a], [, b]) => b.randomRating - a.randomRating);
+  const postsObject = postsArray.reduce((acc, [postKey, post]) => {
+    acc[postKey] = post;
+    return acc;
+  }, {});
+  printAllPosts(postsObject);
 });
 
 relevantButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
-  let postsArray = Object.values(postsData);
-  postsArray.sort((a, b) => a.id - b.id);
-  printAllPosts(postsArray);
+  let postsArray = Object.entries(postsData);
+  postsArray.sort(([, a], [, b]) => a.id - b.id);
+  const postsObject = postsArray.reduce((acc, [postKey, post]) => {
+    acc[postKey] = post;
+    return acc;
+  }, {});
+  printAllPosts(postsObject);
 });
 
 latestButton.addEventListener("click", () => {
   cardsList.innerHTML = "";
-  let postsArray = Object.values(postsData);
-  const lastDate = postsArray.reduce((maxDate, post) => {
+  let postsArray = Object.entries(postsData);
+  const lastDate = postsArray.reduce((maxDate, [, post]) => {
     return post.date > maxDate ? post.date : maxDate;
   }, 0);
-  const lastDayPosts = postsArray.filter((post) => post.date === lastDate);
-  printAllPosts(lastDayPosts);
+  const lastDayPosts = postsArray.filter(([, post]) => post.date === lastDate);
+  const lastDayPostsObject = lastDayPosts.reduce((acc, [postKey, post]) => {
+    acc[postKey] = post;
+    return acc;
+  }, {});
+  printAllPosts(lastDayPostsObject);
 });
 
 document.getElementById("login-btn").addEventListener("click", () => {
